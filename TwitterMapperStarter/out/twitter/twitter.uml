@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>twitter</OriginalElement>
+  <nodes>
+    <node x="122.25" y="0.0">twitter.TwitterSource</node>
+    <node x="219.0" y="216.0">twitter.PlaybackTwitterSource</node>
+    <node x="137.0" y="413.0">twitter.test</node>
+    <node x="0.0" y="216.0">twitter.LiveTwitterSource</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="twitter.LiveTwitterSource" target="twitter.TwitterSource">
+      <point x="0.0" y="-83.0" />
+      <point x="99.5" y="191.0" />
+      <point x="167.75" y="191.0" />
+      <point x="-45.5" y="83.0" />
+    </edge>
+    <edge source="twitter.PlaybackTwitterSource" target="twitter.TwitterSource">
+      <point x="0.0" y="-83.0" />
+      <point x="327.0" y="191.0" />
+      <point x="258.75" y="191.0" />
+      <point x="45.5" y="83.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="217.5" y="221.5" />
+  <SelectedNodes>
+    <node>twitter.test</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
