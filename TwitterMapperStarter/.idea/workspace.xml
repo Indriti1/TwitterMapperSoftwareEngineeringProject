@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59c0a953-a6cc-4dad-baed-ba3ad9071538" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitterMapperStarter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterMapperStarter.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,6 +310,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\logo\Software Engineering\final-project-starter-master\TwitterMapperStarter\src\ui" />
+      <recent name="E:\logo\Software Engineering\final-project-starter-master\TwitterMapperStarter\src\filters" />
+      <recent name="E:\logo\Software Engineering\final-project-starter-master\TwitterMapperStarter\src\twitter" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="twitter" />
     </key>
@@ -543,7 +546,7 @@
       <workItem from="1503113555158" duration="5070000" />
       <workItem from="1503603343961" duration="29000" />
       <workItem from="1503603452332" duration="49902000" />
-      <workItem from="1626284276561" duration="1201000" />
+      <workItem from="1626284276561" duration="1505000" />
     </task>
     <servers />
   </component>
