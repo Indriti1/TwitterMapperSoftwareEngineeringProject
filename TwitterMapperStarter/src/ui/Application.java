@@ -126,6 +126,16 @@ public class Application extends JFrame {
                 // TODO: Use the following method to set the text that appears at the mouse cursor
                 map().setToolTipText("");
                 List<MapMarker> mapMarkers = getMarkersCovering(position, pixelWidth(point));
+                if(!mapMarkers.isEmpty()){
+                    String text = "<html>";
+                    for (MapMarker mapMarker: mapMarkers) {
+                        MapMarkerCustom mapMarkerCustom = (MapMarkerCustom) mapMarker;
+                        text += "<p><img src=" + mapMarkerCustom.getImageURL() + ">";
+                        text += mapMarkerCustom.getText() + "</p>";
+                    }
+                    text += "</html>";
+                    map().setToolTipText(text);
+                }
             }
         });
     }
