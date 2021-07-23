@@ -7,6 +7,7 @@ import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
 import org.openstreetmap.gui.jmapviewer.interfaces.MapMarker;
 import org.openstreetmap.gui.jmapviewer.tilesources.BingAerialTileSource;
 import query.Query;
+import twitter.LiveTwitterSource;
 import twitter.PlaybackTwitterSource;
 import twitter.TwitterSource;
 import util.SphericalGeometry;
@@ -41,7 +42,7 @@ public class Application extends JFrame {
         // The number passed to the constructor is a speedup value:
         //  1.0 - play back at the recorded speed
         //  2.0 - play back twice as fast
-        twitterSource = new PlaybackTwitterSource(60.0);
+        twitterSource = new LiveTwitterSource();
 
         queries = new ArrayList<>();
     }
@@ -56,6 +57,7 @@ public class Application extends JFrame {
         twitterSource.setFilterTerms(allterms);
         contentPanel.addQuery(query);
         // TODO: This is the place where you should connect the new query to the twitter source
+        twitterSource.addObserver(query);
     }
 
     /**
@@ -99,7 +101,7 @@ public class Application extends JFrame {
         map().setTileSource(bing);
 
         //NOTE This is so that the map eventually loads the tiles once Bing attribution is ready.
-        Coordinate coord = new Coordinate(0, 0);
+        Coordinate coordinate = new Coordinate(0, 0);
 
         Timer bingTimer = new Timer();
         TimerTask bingAttributionCheck = new TimerTask() {
@@ -107,7 +109,7 @@ public class Application extends JFrame {
             public void run() {
                 // This is the best method we've found to determine when the Bing data has been loaded.
                 // We use this to trigger zooming the map so that the entire world is visible.
-                if (!bing.getAttributionText(0, coord, coord).equals("Error loading Bing attribution data")) {
+                if (!bing.getAttributionText(0, coordinate, coordinate).equals("Error loading Bing attribution data")) {
                     map().setZoom(2);
                     bingTimer.cancel();
                 }
@@ -119,10 +121,11 @@ public class Application extends JFrame {
         map().addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
-                Point p = e.getPoint();
-                ICoordinate pos = map().getPosition(p);
+                Point point = e.getPoint();
+                ICoordinate position = map().getPosition(point);
                 // TODO: Use the following method to set the text that appears at the mouse cursor
-                map().setToolTipText("This is a tooltip");
+                map().setToolTipText("");
+                List<MapMarker> mapMarkers = getMarkersCovering(position, pixelWidth(point));
             }
         });
     }
@@ -192,5 +195,6 @@ public class Application extends JFrame {
         queries.remove(query);
         Set<String> allterms = getQueryTerms();
         twitterSource.setFilterTerms(allterms);
+        twitterSource.deleteObserver(query);
     }
 }
