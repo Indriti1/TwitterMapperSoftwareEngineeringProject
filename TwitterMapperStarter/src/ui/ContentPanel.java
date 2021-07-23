@@ -14,41 +14,21 @@ public class ContentPanel extends JPanel {
     private JPanel newQueryPanel;
     private JPanel existingQueryList;
     private JMapViewer map;
-
     private Application app;
 
     public ContentPanel(Application app) {
         this.app = app;
-
-        map = new JMapViewer();
-        map.setMinimumSize(new Dimension(100, 50));
+        setMap(100, 50);
         setLayout(new BorderLayout());
         newQueryPanel = new NewQueryPanel(app);
 
         // NOTE: We wrap existingQueryList in a container so it gets a pretty border.
-        JPanel layerPanelContainer = new JPanel();
-        existingQueryList = new JPanel();
-        existingQueryList.setLayout(new javax.swing.BoxLayout(existingQueryList, javax.swing.BoxLayout.Y_AXIS));
-        layerPanelContainer.setLayout(new BorderLayout());
-        layerPanelContainer.setBorder(
-                BorderFactory.createCompoundBorder(
-                        BorderFactory.createTitledBorder("Current Queries"),
-                        BorderFactory.createEmptyBorder(5,5,5,5)));
-        layerPanelContainer.add(existingQueryList, BorderLayout.NORTH);
-
-        querySplitPane = new JSplitPane(0);
-        querySplitPane.setDividerLocation(150);
-        querySplitPane.setTopComponent(newQueryPanel);
-        querySplitPane.setBottomComponent(layerPanelContainer);
-
-        topLevelSplitPane = new JSplitPane(1);
-        topLevelSplitPane.setDividerLocation(150);
-        topLevelSplitPane.setLeftComponent(querySplitPane);
-        topLevelSplitPane.setRightComponent(map);
-
+        wrapExistingQueryPanel();
+        JPanel layerPanelContainer = setLayerPanelContainer(existingQueryList, BorderLayout.NORTH);
+        setQuerySplitPanel(newQueryPanel, layerPanelContainer);
+        setTopLevelSplitPane(querySplitPane, map);
         add(topLevelSplitPane, "Center");
         revalidate();
-
         repaint();
     }
 
@@ -60,7 +40,8 @@ public class ContentPanel extends JPanel {
         colorPanel.setBackground(query.getColor());
         colorPanel.setPreferredSize(new Dimension(30, 30));
         JButton removeButton = new JButton("X");
-        removeButton.setPreferredSize(new Dimension(30, 20));
+        removeButton.setPreferredSize(new Dimension(30, 30));
+        removeButton.setMargin(new Insets(0, 0, 0, 0));
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,5 +76,40 @@ public class ContentPanel extends JPanel {
 
     public JMapViewer getViewer() {
         return map;
+    }
+
+    public void setQuerySplitPanel(JPanel topPanel, JPanel bottomPanel){
+        querySplitPane = new JSplitPane(0);
+        querySplitPane.setDividerLocation(150);
+        querySplitPane.setTopComponent(topPanel);
+        querySplitPane.setBottomComponent(bottomPanel);
+    }
+
+    public void setTopLevelSplitPane(JSplitPane splitPane, JMapViewer map){
+        topLevelSplitPane = new JSplitPane(1);
+        topLevelSplitPane.setDividerLocation(150);
+        topLevelSplitPane.setLeftComponent(splitPane);
+        topLevelSplitPane.setRightComponent(map);
+    }
+
+    public void setMap(int dimension1, int dimension2){
+        map = new JMapViewer();
+        map.setMinimumSize(new Dimension(dimension1, dimension2));
+    }
+
+    public void wrapExistingQueryPanel(){
+        existingQueryList = new JPanel();
+        existingQueryList.setLayout(new javax.swing.BoxLayout(existingQueryList, javax.swing.BoxLayout.Y_AXIS));
+    }
+
+    public JPanel setLayerPanelContainer(JPanel existingQueryList, String borderLayout){
+        JPanel layerPanelContainer = new JPanel();
+        layerPanelContainer.setLayout(new BorderLayout());
+        layerPanelContainer.setBorder(
+                BorderFactory.createCompoundBorder(
+                        BorderFactory.createTitledBorder("Current Queries"),
+                        BorderFactory.createEmptyBorder(5,5,5,5)));
+        layerPanelContainer.add(existingQueryList, borderLayout);
+        return layerPanelContainer;
     }
 }

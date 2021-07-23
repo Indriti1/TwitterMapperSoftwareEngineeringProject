@@ -189,10 +189,10 @@ public class Application extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 System.out.println("Recomputing visible queries");
-                for (Query q : queries) {
-                    JCheckBox box = q.getCheckBox();
+                for (Query query : queries) {
+                    JCheckBox box = query.getCheckBox();
                     Boolean state = box.isSelected();
-                    q.setVisible(state);
+                    query.setVisible(state);
                 }
                 map().repaint();
             }

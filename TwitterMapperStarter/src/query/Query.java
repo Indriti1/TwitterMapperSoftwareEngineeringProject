@@ -95,9 +95,13 @@ public class Query implements Observer {
             Image image = imageFromURL(imageURL);
             String tweet = status.getText();
             MapMarkerCustom customMarker = new MapMarkerCustom(layer, color, coordinate, identifier, imageURL, image, tweet);
-            circleMarkerList.add(customMarker);
-            map.addMapMarker(customMarker);
+            addMarker(customMarker);
         }
+    }
+
+    public void addMarker(MapMarkerCustom customMarker){
+        circleMarkerList.add(customMarker);
+        map.addMapMarker(customMarker);
     }
 }
 
