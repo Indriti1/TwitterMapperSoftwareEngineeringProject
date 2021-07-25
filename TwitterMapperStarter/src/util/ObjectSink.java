@@ -11,26 +11,26 @@ public class ObjectSink {
         try {
             file = new File(filename);
             outstream = new ObjectOutputStream(new FileOutputStream(file));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException exception) {
+            exception.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
-    public void storeObject(Object o) {
+    public void storeObject(Object object) {
         try {
-            outstream.writeObject(o);
-        } catch (IOException e) {
-            e.printStackTrace();
+            outstream.writeObject(object);
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     public void close() {
         try {
             outstream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 }

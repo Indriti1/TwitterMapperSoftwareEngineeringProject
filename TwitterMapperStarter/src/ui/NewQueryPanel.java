@@ -29,41 +29,30 @@ public class NewQueryPanel extends JPanel {
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         queryLabel.setLabelFor(newQuery);
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridwidth = GridBagConstraints.RELATIVE;
-        c.fill = GridBagConstraints.NONE;
-        c.gridy = 0;
-        c.gridx = 0;
-        add(queryLabel, c);
-        c.gridwidth = GridBagConstraints.REMAINDER;
-        c.fill = GridBagConstraints.HORIZONTAL;
+        GridBagConstraints constraints = new GridBagConstraints();
+        setGridBagWidthFillAndCoordinates(constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 0,0);
+        add(queryLabel, constraints);
+
+        setGridBagWidthFillAndX(constraints, GridBagConstraints.REMAINDER, GridBagConstraints.HORIZONTAL, 1);
         newQuery.setMaximumSize(new Dimension(200, 20));
-        c.gridx = 1;
-        add(newQuery, c);
+        add(newQuery, constraints);
 
         add(Box.createRigidArea(new Dimension(5, 5)));
 
         JLabel colorLabel = new JLabel("Select Color: ");
         colorSetter.setBackground(getRandomColor());
+        setGridBagWidthFillAndCoordinates(constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 1, 0);
+        add(colorLabel, constraints);
 
-        c.gridwidth = GridBagConstraints.RELATIVE;
-        c.fill = GridBagConstraints.NONE;
-        c.gridy = 1;
-        c.gridx = 0;
-        add(colorLabel, c);
-        c.gridwidth = GridBagConstraints.REMAINDER;
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 1;
+        setGridBagWidthFillAndX(constraints, GridBagConstraints.REMAINDER, GridBagConstraints.BOTH, 1);
         colorSetter.setMaximumSize(new Dimension(200, 20));
-        add(colorSetter, c);
+        add(colorSetter, constraints);
 
         add(Box.createRigidArea(new Dimension(5, 5)));
 
         JButton addQueryButton = new JButton("Add New Search");
-        c.gridx = GridBagConstraints.RELATIVE;       //aligned with button 2
-        c.gridwidth = 2;   //2 columns wide
-        c.gridy = GridBagConstraints.RELATIVE;       //third row
-        add(addQueryButton, c);
+        setGridBagWidthAndCoordinates(constraints, 2, GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE);
+        add(addQueryButton, constraints);
 
         setBorder(
                 BorderFactory.createCompoundBorder(
@@ -112,5 +101,24 @@ public class NewQueryPanel extends JPanel {
         final float saturation = (random.nextInt(2000) + 1000) / 10000f;
         final float luminance = 0.9f;
         return Color.getHSBColor(hue, saturation, luminance);
+    }
+
+    public void setGridBagWidthFillAndCoordinates(GridBagConstraints constraints, int width, int fill, int x, int y){
+        constraints.gridwidth = width;
+        constraints.fill = fill;
+        constraints.gridy = x;
+        constraints.gridx = y;
+    }
+
+    public void setGridBagWidthFillAndX(GridBagConstraints constraints, int width, int fill, int x){
+        constraints.gridwidth = width;
+        constraints.fill = fill;
+        constraints.gridy = x;
+    }
+
+    public void setGridBagWidthAndCoordinates(GridBagConstraints constraints, int width, int x, int y){
+        constraints.gridwidth = width;
+        constraints.gridy = x;
+        constraints.gridx = y;
     }
 }

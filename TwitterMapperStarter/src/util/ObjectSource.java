@@ -13,30 +13,30 @@ public class ObjectSource {
         file = new File(filename);
         try {
             instream = new ObjectInputStream(new FileInputStream(file));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 
     public Object readObject() {
-        Object o = null;
+        Object object = null;
         try {
-            o = instream.readObject();
-        } catch (EOFException e) {
+            object = instream.readObject();
+        } catch (EOFException exception) {
             // Do nothing, EOF is expected to happen eventually
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        } catch (ClassNotFoundException exception) {
+            exception.printStackTrace();
         }
-        return o;
+        return object;
     }
 
     public void close() {
         try {
             instream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
     }
 }

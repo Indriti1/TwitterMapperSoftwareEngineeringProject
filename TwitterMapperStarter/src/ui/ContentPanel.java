@@ -14,13 +14,13 @@ public class ContentPanel extends JPanel {
     private JPanel newQueryPanel;
     private JPanel existingQueryList;
     private JMapViewer map;
-    private Application app;
+    private Application application;
 
-    public ContentPanel(Application app) {
-        this.app = app;
+    public ContentPanel(Application application) {
+        this.application = application;
         setMap(100, 50);
         setLayout(new BorderLayout());
-        newQueryPanel = new NewQueryPanel(app);
+        newQueryPanel = new NewQueryPanel(application);
 
         // NOTE: We wrap existingQueryList in a container so it gets a pretty border.
         wrapExistingQueryPanel();
@@ -34,42 +34,12 @@ public class ContentPanel extends JPanel {
 
     // Add a new query to the set of queries and update the UI to reflect the new query.
     public void addQuery(Query query) {
-        JPanel newQueryPanel = new JPanel();
-        newQueryPanel.setLayout(new GridBagLayout());
-        JPanel colorPanel = new JPanel();
-        colorPanel.setBackground(query.getColor());
-        colorPanel.setPreferredSize(new Dimension(30, 30));
-        JButton removeButton = new JButton("X");
-        removeButton.setPreferredSize(new Dimension(30, 30));
-        removeButton.setMargin(new Insets(0, 0, 0, 0));
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                app.terminateQuery(query);
-                query.terminate();
-                existingQueryList.remove(newQueryPanel);
-                revalidate();
-            }
-        });
-
-        GridBagConstraints c = new GridBagConstraints();
-        newQueryPanel.add(colorPanel, c);
-
-        c = new GridBagConstraints();
-        JCheckBox checkbox = new JCheckBox(query.getQueryString());
-        checkbox.setSelected(true);
-        checkbox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                app.updateVisibility();
-            }
-        });
-        query.setCheckBox(checkbox);
-        c.weightx = 1.0;
-        c.fill = GridBagConstraints.HORIZONTAL;
-        newQueryPanel.add(checkbox, c);
-        newQueryPanel.add(removeButton);
-
+        JPanel newQueryPanel = setNewQueryPanel();
+        JPanel colorPanel = setColorPanel(query, 30, 30);
+        JButton removeButton = setRemoveButton(30, 30, application, query, existingQueryList, newQueryPanel);
+        GridBagConstraints constraints = addGridBagConstraints(newQueryPanel, colorPanel);
+        JCheckBox checkbox = setCheckBox(query);
+        addToNewQueryPanel(newQueryPanel, checkbox, constraints, removeButton);
         existingQueryList.add(newQueryPanel);
         validate();
     }
@@ -112,4 +82,60 @@ public class ContentPanel extends JPanel {
         layerPanelContainer.add(existingQueryList, borderLayout);
         return layerPanelContainer;
     }
+
+    public JPanel setNewQueryPanel(){
+        JPanel newQueryPanel = new JPanel();
+        newQueryPanel.setLayout(new GridBagLayout());
+        return newQueryPanel;
+    }
+
+    public JPanel setColorPanel(Query query, int dimension1, int dimension2){
+        JPanel colorPanel = new JPanel();
+        colorPanel.setBackground(query.getColor());
+        colorPanel.setPreferredSize(new Dimension(dimension1, dimension2));
+        return colorPanel;
+    }
+
+    public JButton setRemoveButton(int dimension1, int dimension2, Application application, Query query, JPanel existingQueryList, JPanel newQueryPanel){
+        JButton removeButton = new JButton("X");
+        removeButton.setPreferredSize(new Dimension(dimension1, dimension2));
+        removeButton.setMargin(new Insets(0, 0, 0, 0));
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                application.terminateQuery(query);
+                query.terminate();
+                existingQueryList.remove(newQueryPanel);
+                revalidate();
+            }
+        });
+        return removeButton;
+    }
+
+    public JCheckBox setCheckBox(Query query){
+        JCheckBox checkbox = new JCheckBox(query.getQueryString());
+        checkbox.setSelected(true);
+        checkbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                application.updateVisibility();
+            }
+        });
+        query.setCheckBox(checkbox);
+        return checkbox;
+    }
+
+    public GridBagConstraints addGridBagConstraints(JPanel newQueryPanel, JPanel colorPanel){
+        GridBagConstraints constraints = new GridBagConstraints();
+        newQueryPanel.add(colorPanel, constraints);
+        constraints.weightx = 1.0;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        return constraints;
+    }
+
+    public void addToNewQueryPanel(JPanel newQueryPanel, JCheckBox checkBox, GridBagConstraints constraints, JButton removeButton){
+        newQueryPanel.add(checkBox, constraints);
+        newQueryPanel.add(removeButton);
+    }
+
 }

@@ -66,11 +66,11 @@ public class Application extends JFrame {
      * @return
      */
     private Set<String> getQueryTerms() {
-        Set<String> ans = new HashSet<>();
-        for (Query q : queries) {
-            ans.addAll(q.getFilter().terms());
+        Set<String> queryTerms = new HashSet<>();
+        for (Query query : queries) {
+            queryTerms.addAll(query.getFilter().terms());
         }
-        return ans;
+        return queryTerms;
     }
 
     /**
@@ -85,20 +85,9 @@ public class Application extends JFrame {
 
         // Do UI initialization
         contentPanel = new ContentPanel(this);
-        setLayout(new BorderLayout());
-        add(contentPanel, BorderLayout.CENTER);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setContentPanelParameters(contentPanel);
 
-        // Always have map markers showing.
-        map().setMapMarkerVisible(true);
-        // Always have zoom controls showing,
-        // and allow scrolling of the map around the edge of the world.
-        map().setZoomContolsVisible(true);
-        map().setScrollWrapEnabled(true);
-
-        // Use the Bing tile provider
-        map().setTileSource(bing);
+        setMapParameters(bing);
 
         //NOTE This is so that the map eventually loads the tiles once Bing attribution is ready.
         Coordinate coordinate = new Coordinate(0, 0);
@@ -124,7 +113,6 @@ public class Application extends JFrame {
                 Point point = e.getPoint();
                 ICoordinate position = map().getPosition(point);
                 // TODO: Use the following method to set the text that appears at the mouse cursor
-                map().setToolTipText("");
                 List<MapMarker> mapMarkers = getMarkersCovering(position, pixelWidth(point));
                 if(!mapMarkers.isEmpty()){
                     String text = "<html>";
@@ -150,27 +138,27 @@ public class Application extends JFrame {
 
     // Get those layers (of tweet markers) that are visible because their corresponding query is enabled
     private Set<Layer> getVisibleLayers() {
-        Set<Layer> ans = new HashSet<>();
-        for (Query q : queries) {
-            if (q.getVisible()) {
-                ans.add(q.getLayer());
+        Set<Layer> visibleLayers = new HashSet<>();
+        for (Query query : queries) {
+            if (query.getVisible()) {
+                visibleLayers.add(query.getLayer());
             }
         }
-        return ans;
+        return visibleLayers;
     }
 
     // Get all the markers at the given map position, at the current map zoom setting
-    private List<MapMarker> getMarkersCovering(ICoordinate pos, double pixelWidth) {
-        List<MapMarker> ans = new ArrayList<>();
+    private List<MapMarker> getMarkersCovering(ICoordinate position, double pixelWidth) {
+        List<MapMarker> mapMarkers = new ArrayList<>();
         Set<Layer> visibleLayers = getVisibleLayers();
-        for (MapMarker m : map().getMapMarkerList()) {
-            if (!visibleLayers.contains(m.getLayer())) continue;
-            double distance = SphericalGeometry.distanceBetween(m.getCoordinate(), pos);
-            if (distance < m.getRadius() * pixelWidth) {
-                ans.add(m);
+        for (MapMarker mapMarker : map().getMapMarkerList()) {
+            if (!visibleLayers.contains(mapMarker.getLayer())) continue;
+            double distance = SphericalGeometry.distanceBetween(mapMarker.getCoordinate(), position);
+            if (distance < mapMarker.getRadius() * pixelWidth) {
+                mapMarkers.add(mapMarker);
             }
         }
-        return ans;
+        return mapMarkers;
     }
 
     public JMapViewer map() {
@@ -206,5 +194,24 @@ public class Application extends JFrame {
         Set<String> allterms = getQueryTerms();
         twitterSource.setFilterTerms(allterms);
         twitterSource.deleteObserver(query);
+    }
+
+    public void setMapParameters(BingAerialTileSource bing){
+        // Always have map markers showing.
+        map().setMapMarkerVisible(true);
+        // Always have zoom controls showing,
+        // and allow scrolling of the map around the edge of the world.
+        map().setZoomContolsVisible(true);
+        map().setScrollWrapEnabled(true);
+
+        // Use the Bing tile provider
+        map().setTileSource(bing);
+    }
+
+    public void setContentPanelParameters(ContentPanel contentPanel){
+        setLayout(new BorderLayout());
+        add(contentPanel, BorderLayout.CENTER);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 }

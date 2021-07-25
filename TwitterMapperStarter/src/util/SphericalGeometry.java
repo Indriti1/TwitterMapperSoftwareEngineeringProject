@@ -15,15 +15,16 @@ public class SphericalGeometry {
      * @param p2  second point
      * @return distance between p1 and p2 in metres
      */
+    //Haversine's Formula
     public static double distanceBetween(ICoordinate p1, ICoordinate p2) {
-        double lat1 = p1.getLat() / 180.0 * Math.PI;
-        double lat2 = p2.getLat() / 180.0 * Math.PI;
-        double deltaLon = (p2.getLon() - p1.getLon()) / 180.0 * Math.PI;
-        double deltaLat = (p2.getLat() - p1.getLat()) / 180.0 * Math.PI;
+        double latitude1 = p1.getLat() / 180.0 * Math.PI;
+        double latitude2 = p2.getLat() / 180.0 * Math.PI;
+        double deltaLongitude = (p2.getLon() - p1.getLon()) / 180.0 * Math.PI;
+        double deltaLatitude = (p2.getLat() - p1.getLat()) / 180.0 * Math.PI;
 
-        double a = Math.sin(deltaLat / 2.0) * Math.sin(deltaLat / 2.0)
-                + Math.cos(lat1) * Math.cos(lat2)
-                * Math.sin(deltaLon / 2.0) * Math.sin(deltaLon / 2.0);
+        double a = Math.sin(deltaLatitude / 2.0) * Math.sin(deltaLatitude / 2.0)
+                + Math.cos(latitude1) * Math.cos(latitude2)
+                * Math.sin(deltaLongitude / 2.0) * Math.sin(deltaLongitude / 2.0);
         double c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         return c * RADIUS;

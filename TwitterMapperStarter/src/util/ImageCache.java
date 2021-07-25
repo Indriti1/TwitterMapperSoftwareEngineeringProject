@@ -21,7 +21,7 @@ public class ImageCache {
         return theInstance;
     }
 
-    private Map<String, BufferedImage> cache = new HashMap<>();
+    private Map<String, BufferedImage> imageCache = new HashMap<>();
     private Map<String, String> pathCache = new HashMap<>();
 
     private ImageCache() {
@@ -29,26 +29,26 @@ public class ImageCache {
     }
 
     public BufferedImage getImage(String url) {
-        BufferedImage ans = cache.get(url);
-        if (ans == null) {
-            ans = Util.imageFromURL(url);
-            cache.put(url, ans);
+        BufferedImage image = imageCache.get(url);
+        if (image == null) {
+            image = Util.imageFromURL(url);
+            imageCache.put(url, image);
         }
-        return ans;
+        return image;
     }
 
     public void loadImage(String url) {
-        BufferedImage ans = cache.get(url);
-        if (ans == null) {
-            cache.put(url, defaultImage);
+        BufferedImage image = imageCache.get(url);
+        if (image == null) {
+            imageCache.put(url, defaultImage);
             Thread t = new Thread() {
                 @Override
                 public void run() {
-                    BufferedImage ans = Util.imageFromURL(url);
+                    BufferedImage image = Util.imageFromURL(url);
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            cache.put(url, ans);
+                            imageCache.put(url, image);
                         }
                     });
 
@@ -71,13 +71,13 @@ public class ImageCache {
 
     private String sha256(String data) {
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
             byte[] bytes = data.getBytes();
-            md.update(bytes);
-            byte[] hash = md.digest();
+            messageDigest.update(bytes);
+            byte[] hash = messageDigest.digest();
             return bytesToHex(hash);
 
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException exception) {
             throw new RuntimeException("Can't find SHA-256");
         }
     }
@@ -91,18 +91,18 @@ public class ImageCache {
 
     // I'm going to assume that hashing is good enough and collisions are rare enough
     private String saveImage(BufferedImage image, String path) {
-        File dir = new File("data/imagecache");
-        if (!dir.isDirectory()) {
-            dir.mkdir();
+        File directory = new File("data/imagecache");
+        if (!directory.isDirectory()) {
+            directory.mkdir();
         }
         String pathString = "data/imagecache/" + path + ".png";
-        File f = new File(pathString);
-        pathString = f.getAbsolutePath();
-        if (f.canRead()) return pathString;
+        File file = new File(pathString);
+        pathString = file.getAbsolutePath();
+        if (file.canRead()) return pathString;
         try {
-            ImageIO.write(image, "png", f);
-        } catch (IOException e) {
-            e.printStackTrace();
+            ImageIO.write(image, "png", file);
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
         return pathString;
     }

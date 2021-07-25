@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="59c0a953-a6cc-4dad-baed-ba3ad9071538" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/filters/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/filters/test/TestFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/test/TestFilters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/filters/test/TestParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/test/TestParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TwitterMapperStarter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterMapperStarter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/Application$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/Application$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ContentPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +312,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/final-project-starter-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../jar_files/twitter4j-stream-4.0.4.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -374,13 +380,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -558,6 +566,7 @@
       <workItem from="1503603452332" duration="49902000" />
       <workItem from="1626284276561" duration="2197000" />
       <workItem from="1626356736084" duration="3845000" />
+      <workItem from="1627223017956" duration="271000" />
     </task>
     <servers />
   </component>

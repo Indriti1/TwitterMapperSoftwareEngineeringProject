@@ -36,7 +36,7 @@ public class MapMarkerCustom extends MapMarkerCircle {
     }
 
     @Override
-    public void paint(Graphics g, Point position, int radius) {
+    public void paint(Graphics graphic, Point position, int radius) {
         int sizeImage = markerSize;
         int halfSizeImage = sizeImage / 2;
         int xImage = position.x - halfSizeImage;
@@ -46,20 +46,20 @@ public class MapMarkerCustom extends MapMarkerCircle {
         int x = xImage - borderSize;
         int y = yImage - borderSize;
 
-        g.setClip(new Ellipse2D.Float(x, y, size, size));
-        g.setColor(color);
-        g.fillOval(x, y, size, size);
+        graphic.setClip(new Ellipse2D.Float(x, y, size, size));
+        graphic.setColor(color);
+        graphic.fillOval(x, y, size, size);
 
-        g.setClip(new Ellipse2D.Float(xImage, yImage, sizeImage, sizeImage));
-        g.drawImage(image, xImage, yImage, sizeImage, sizeImage, null);
+        graphic.setClip(new Ellipse2D.Float(xImage, yImage, sizeImage, sizeImage));
+        graphic.drawImage(image, xImage, yImage, sizeImage, sizeImage, null);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof MapMarkerCustom)) return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof MapMarkerCustom)) return false;
 
-        MapMarkerCustom that = (MapMarkerCustom) obj;
+        MapMarkerCustom that = (MapMarkerCustom) object;
 
         return identifier == that.identifier;
     }
