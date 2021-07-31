@@ -36,12 +36,6 @@ public class Application extends JFrame {
 
     private void initialize() {
         // To use the live twitter stream, use the following line
-        // twitterSource = new LiveTwitterSource();
-
-        // To use the recorded twitter stream, use the following line
-        // The number passed to the constructor is a speedup value:
-        //  1.0 - play back at the recorded speed
-        //  2.0 - play back twice as fast
         twitterSource = new LiveTwitterSource();
 
         queries = new ArrayList<>();
@@ -86,7 +80,6 @@ public class Application extends JFrame {
         // Do UI initialization
         contentPanel = new ContentPanel(this);
         setContentPanelParameters(contentPanel);
-
         setMapParameters(bing);
 
         //NOTE This is so that the map eventually loads the tiles once Bing attribution is ready.
@@ -130,9 +123,9 @@ public class Application extends JFrame {
 
     // How big is a single pixel on the map?  We use this to compute which tweet markers
     // are at the current most position.
-    private double pixelWidth(Point p) {
-        ICoordinate center = map().getPosition(p);
-        ICoordinate edge = map().getPosition(new Point(p.x + 1, p.y));
+    private double pixelWidth(Point point) {
+        ICoordinate center = map().getPosition(point);
+        ICoordinate edge = map().getPosition(new Point(point.x + 1, point.y));
         return SphericalGeometry.distanceBetween(center, edge);
     }
 
@@ -197,14 +190,10 @@ public class Application extends JFrame {
     }
 
     public void setMapParameters(BingAerialTileSource bing){
-        // Always have map markers showing.
+        // Map markers and zoom controls are made visible and scrolling is allowed. Bing is also used as tile provider
         map().setMapMarkerVisible(true);
-        // Always have zoom controls showing,
-        // and allow scrolling of the map around the edge of the world.
         map().setZoomContolsVisible(true);
         map().setScrollWrapEnabled(true);
-
-        // Use the Bing tile provider
         map().setTileSource(bing);
     }
 
