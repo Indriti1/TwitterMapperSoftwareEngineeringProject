@@ -22,7 +22,7 @@ public class ContentPanel extends JPanel {
         setLayout(new BorderLayout());
         newQueryPanel = new NewQueryPanel(application);
 
-        // NOTE: We wrap existingQueryList in a container so it gets a pretty border.
+        // NOTE: We wrap existingQueryList in a container so it gets a pretty border. We also set querySplitPanel and topLevelSplitPane
         wrapExistingQueryPanel();
         JPanel layerPanelContainer = setLayerPanelContainer(existingQueryList, BorderLayout.NORTH);
         setQuerySplitPanel(newQueryPanel, layerPanelContainer);

@@ -25,7 +25,7 @@ public class PlaybackTwitterSource extends TwitterSource {
     private void startThread() {
         if (threadStarted) return;
         threadStarted = true;
-        Thread t = new Thread() {
+        Thread thread = new Thread() {
             long initialDelay = 1000;
             long playbackStartTime = System.currentTimeMillis() + initialDelay;
             long recordStartTime = 0;
@@ -33,13 +33,13 @@ public class PlaybackTwitterSource extends TwitterSource {
             public void run() {
                 long now;
                 while (true) {
-                    Object timeo = source.readObject();
-                    if (timeo == null) break;
-                    Object statuso = source.readObject();
-                    if (statuso == null) break;
-                    long statusTime = (Long)timeo;
+                    Object timeObject = source.readObject();
+                    if (timeObject == null) break;
+                    Object statusObject = source.readObject();
+                    if (statusObject == null) break;
+                    long statusTime = (Long)timeObject;
                     if (recordStartTime == 0) recordStartTime = statusTime;
-                    Status status = (Status) statuso;
+                    Status status = (Status) statusObject;
                     long playbackTime = computePlaybackTime(statusTime);
                     while ((now = System.currentTimeMillis()) < playbackTime) {
                         pause(playbackTime - now);
@@ -60,12 +60,12 @@ public class PlaybackTwitterSource extends TwitterSource {
             private void pause(long millis) {
                 try {
                     Thread.sleep(millis);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                } catch (InterruptedException exception) {
+                    exception.printStackTrace();
                 }
             }
         };
-        t.start();
+        thread.start();
     }
 
     /**

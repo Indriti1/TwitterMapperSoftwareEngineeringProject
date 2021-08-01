@@ -3,15 +3,46 @@
   <component name="ChangeListManager">
     <list default="true" id="59c0a953-a6cc-4dad-baed-ba3ad9071538" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TwitterMapperStarter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TwitterMapperStarter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/AndFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/AndFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/BasicFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/BasicFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/NotFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/NotFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/OrFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/OrFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/Scanner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/Scanner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/filters/SyntaxError.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/filters/SyntaxError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/query/Query.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/query/Query.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/LiveTwitterSource$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/LiveTwitterSource$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/LiveTwitterSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/LiveTwitterSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/PlaybackTwitterSource$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/PlaybackTwitterSource$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/PlaybackTwitterSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/PlaybackTwitterSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/TwitterSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/TwitterSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/test/TestPlaybackTwitterSource$TestObserver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/test/TestPlaybackTwitterSource$TestObserver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/twitter/test/TestPlaybackTwitterSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/twitter/test/TestPlaybackTwitterSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/ui/Application$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/ui/Application$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/ui/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ui/ContentPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/ContentPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/NewQueryPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/NewQueryPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/NewQueryPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/NewQueryPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ui/NewQueryPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ui/NewQueryPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/AndFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/AndFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/BasicFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/BasicFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/NotFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/NotFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/OrFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/filters/OrFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/filters.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/filters/filters.uml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/query/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/query/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitter/PlaybackTwitterSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitter/PlaybackTwitterSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitter/TwitterSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitter/TwitterSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitter/test/TestPlaybackTwitterSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitter/test/TestPlaybackTwitterSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitter/twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitter/twitter.uml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ContentPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ContentPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/NewQueryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/NewQueryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ui.uml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +343,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../jar_files/twitter4j-stream-4.0.4.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/ui" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -341,7 +372,7 @@
       <recent name="filters.test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestParser">
+  <component name="RunManager" selected="JUnit.TestScanner">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -442,18 +473,15 @@
       </method>
     </configuration>
     <configuration name="TestScanner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="210project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="filters.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <module name="TwitterMapperStarter" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
       <option name="PACKAGE_NAME" value="filters.test" />
       <option name="MAIN_CLASS_NAME" value="filters.test.TestScanner" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
+      <option name="WORKING_DIRECTORY" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -532,11 +560,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestScanner" />
         <item itemvalue="JUnit.TestParser" />
         <item itemvalue="JUnit.TestFilters" />
-        <item itemvalue="JUnit.TestPlaybackTwitterSource (1)" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.TestScanner" />
+        <item itemvalue="JUnit.TestPlaybackTwitterSource (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -567,6 +595,8 @@
       <workItem from="1626284276561" duration="2197000" />
       <workItem from="1626356736084" duration="3845000" />
       <workItem from="1627223017956" duration="271000" />
+      <workItem from="1627821910717" duration="4388000" />
+      <workItem from="1627826349965" duration="1190000" />
     </task>
     <servers />
   </component>

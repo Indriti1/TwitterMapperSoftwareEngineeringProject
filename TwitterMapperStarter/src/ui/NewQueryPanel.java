@@ -21,38 +21,25 @@ public class NewQueryPanel extends JPanel {
     private Random random;
 
     public NewQueryPanel(Application app) {
+        //Setting initial variables needed from the application
         this.app = app;
         this.colorSetter = new JPanel();
-
         random = new Random();
-
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
-
-        queryLabel.setLabelFor(newQuery);
         GridBagConstraints constraints = new GridBagConstraints();
-        setGridBagWidthFillAndCoordinates(constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 0,0);
-        add(queryLabel, constraints);
-
-        setGridBagWidthFillAndX(constraints, GridBagConstraints.REMAINDER, GridBagConstraints.HORIZONTAL, 1);
-        newQuery.setMaximumSize(new Dimension(200, 20));
-        add(newQuery, constraints);
-
-        add(Box.createRigidArea(new Dimension(5, 5)));
-
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+        queryLabel.setLabelFor(newQuery);
         JLabel colorLabel = new JLabel("Select Color: ");
-        colorSetter.setBackground(getRandomColor());
-        setGridBagWidthFillAndCoordinates(constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 1, 0);
-        add(colorLabel, constraints);
-
-        setGridBagWidthFillAndX(constraints, GridBagConstraints.REMAINDER, GridBagConstraints.BOTH, 1);
-        colorSetter.setMaximumSize(new Dimension(200, 20));
-        add(colorSetter, constraints);
-
-        add(Box.createRigidArea(new Dimension(5, 5)));
-
         JButton addQueryButton = new JButton("Add New Search");
-        setGridBagWidthAndCoordinates(constraints, 2, GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE);
-        add(addQueryButton, constraints);
+        colorSetter.setBackground(getRandomColor());
+
+        //Adding Constraints to 2 JLabels, 1 JTextField, 1 JPanel and 1 JButton
+        addConstraintsToJLabel(queryLabel, constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 0,0);
+        addConstraintsToJTextField(newQuery, constraints, GridBagConstraints.REMAINDER, GridBagConstraints.HORIZONTAL, 1);
+        add(Box.createRigidArea(new Dimension(5, 5)));
+        addConstraintsToJLabel(colorLabel, constraints, GridBagConstraints.RELATIVE, GridBagConstraints.NONE, 1, 0);
+        addConstraintsToJPanel(colorSetter, constraints, GridBagConstraints.REMAINDER, GridBagConstraints.BOTH, 1);
+        add(Box.createRigidArea(new Dimension(5, 5)));
+        addConstraintsToJButton(addQueryButton, constraints, 2, GridBagConstraints.RELATIVE, GridBagConstraints.RELATIVE);
 
         setBorder(
                 BorderFactory.createCompoundBorder(
@@ -120,5 +107,27 @@ public class NewQueryPanel extends JPanel {
         constraints.gridwidth = width;
         constraints.gridy = x;
         constraints.gridx = y;
+    }
+
+    public void addConstraintsToJLabel(JLabel jLabel, GridBagConstraints constraints, int width, int fill, int x, int y){
+        setGridBagWidthFillAndCoordinates(constraints, width, fill, x,y);
+        add(jLabel, constraints);
+    }
+
+    public void addConstraintsToJTextField(JTextField jQuery, GridBagConstraints constraints, int width, int fill, int x){
+        setGridBagWidthFillAndX(constraints, width, fill, x);
+        jQuery.setMaximumSize(new Dimension(200, 20));
+        add(jQuery, constraints);
+    }
+
+    public void addConstraintsToJPanel(JPanel jPanel, GridBagConstraints constraints, int width, int fill, int x){
+        setGridBagWidthFillAndX(constraints, width, fill, x);
+        jPanel.setMaximumSize(new Dimension(200, 20));
+        add(jPanel, constraints);
+    }
+
+    public void addConstraintsToJButton(JButton jButton, GridBagConstraints constraints, int width, int x, int y){
+        setGridBagWidthAndCoordinates(constraints, width, x, y);
+        add(jButton, constraints);
     }
 }

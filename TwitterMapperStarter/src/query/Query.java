@@ -86,8 +86,8 @@ public class Query implements Observer {
     }
 
     @Override
-    public void update(Observable observable, Object o) {
-        Status status = (Status) o;
+    public void update(Observable observable, Object object) {
+        Status status = (Status) object;
         if(filter.matches(status)){
             Coordinate coordinate = statusCoordinate(status);
             long identifier = status.getId();

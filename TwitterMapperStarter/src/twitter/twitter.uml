@@ -5,7 +5,7 @@
   <nodes>
     <node x="122.25" y="0.0">twitter.TwitterSource</node>
     <node x="219.0" y="216.0">twitter.PlaybackTwitterSource</node>
-    <node x="137.0" y="413.0">twitter.test</node>
+    <node x="0.0" y="427.0">twitter.test</node>
     <node x="0.0" y="216.0">twitter.LiveTwitterSource</node>
   </nodes>
   <notes />
@@ -23,9 +23,9 @@
       <point x="45.5" y="83.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="217.5" y="221.5" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="217.5" y="228.5" />
   <SelectedNodes>
-    <node>twitter.test</node>
+    <node>twitter.LiveTwitterSource</node>
   </SelectedNodes>
   <Categories>
     <Category>Fields</Category>

@@ -47,8 +47,8 @@ public class Application extends JFrame {
      */
     public void addQuery(Query query) {
         queries.add(query);
-        Set<String> allterms = getQueryTerms();
-        twitterSource.setFilterTerms(allterms);
+        Set<String> allTerms = getQueryTerms();
+        twitterSource.setFilterTerms(allTerms);
         contentPanel.addQuery(query);
         // TODO: This is the place where you should connect the new query to the twitter source
         twitterSource.addObserver(query);
@@ -106,6 +106,7 @@ public class Application extends JFrame {
                 Point point = e.getPoint();
                 ICoordinate position = map().getPosition(point);
                 // TODO: Use the following method to set the text that appears at the mouse cursor
+                map().setToolTipText("");
                 List<MapMarker> mapMarkers = getMarkersCovering(position, pixelWidth(point));
                 if(!mapMarkers.isEmpty()){
                     String text = "<html>";
@@ -184,8 +185,8 @@ public class Application extends JFrame {
     public void terminateQuery(Query query) {
         // TODO: This is the place where you should disconnect the expiring query from the twitter source
         queries.remove(query);
-        Set<String> allterms = getQueryTerms();
-        twitterSource.setFilterTerms(allterms);
+        Set<String> allTerms = getQueryTerms();
+        twitterSource.setFilterTerms(allTerms);
         twitterSource.deleteObserver(query);
     }
 
